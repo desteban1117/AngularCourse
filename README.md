@@ -7,7 +7,7 @@ Documentación de Angular
 1. Descargar y configurar NodeJs.
 Se descarga de la pagina de NideJs la version estable y se realizan las siguientes configuraciones(Linux):
 
- `sudo mkdir /usr/lib/nodejs
+ `sudo mkdir /usr/lib/nodejs\n
  sudo tar -xJvf node-v8.9.2-linux-x64.tar.xz -C /usr/lib/nodejs 
  sudo mv /usr/lib/nodejs/node-v8.9.2-linux-x64 /usr/lib/nodejs/node-v8.9.2`
  
