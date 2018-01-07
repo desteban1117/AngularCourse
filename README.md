@@ -23,4 +23,19 @@ Se añade las siguientes lineas al archivo .profile de la siguiente manera:
   
 y se refreca el archivo `. ~/.profile`
 
+2. Configurar npm
+
+*Se crea directorio para las instalaciones globales
+  `mkdir ~/.npm-global`
+*Se configura el nuevo path en npm
+  `npm config set prefix '~/.npm-global'`
+*Se agrega la siquiente linea en el archivo .profile
+ `export PATH=~/.npm-global/bin:$PATH`
+*update en variables del sistema
+  `source ~/.profile`
+
+
+
+  
+
 
