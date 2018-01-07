@@ -21,6 +21,6 @@ Se añade las siguientes lineas al archivo .profile de la siguiente manera:
  export PATH=$NODEJS_HOME/bin:$PATH
  ```
   
-y se refreca el archivo . ~/.profile
+y se refreca el archivo `. ~/.profile`
 
 
