@@ -74,7 +74,21 @@ let e: number[] = [1,2,3];
 let f: any[] = [1, true, 'a', false];
 ```
 
-Se puede notar que el tipo any puede contener cualquier tipo de variable 
+Se puede notar que el tipo any puede contener cualquier tipo de variable.
+
+En typeSript tanbién se pueden definir constantes de la siguiente manera
+
+```
+const colorBlue = 0;
+const colorRed = 1;
+const colorGreen = 2;
+```
+
+Otra manera para crear varias constantes es utilizando la sintaxis enum:
+```
+enum color = {Blue = 0, Red = 1, Green = 2}
+let backgroundColor = color.Blue
+```
 
 
 
