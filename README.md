@@ -33,6 +33,47 @@ y se refreca el archivo `. ~/.profile`
  `export PATH=~/.npm-global/bin:$PATH`
 * update en variables del sistema
   `source ~/.profile`
+  
+3. Instalar angular cli
+`sudo npm install -g @angular/cli`
+para provar que angular cli haya quedado bien instalada utilizamos el siguiente comando
+`ng --version`
+
+4. Se instala Visual Studio Code
+
+## Primer app de angular
+
+Para crear con angular cli un nuevo proyecto se realiza con el siguiente comando
+`ng new hello-world`
+Esto crea una carpeta en nuestro caso llamada hello-world, ingresamos a ella por consola y con el siguiente comando se puede iniciar la aplicación. 
+`ng server`
+
+## TypeScript Fundamentals
+
+TypeScript es un super set de javaScript que contiene nuevas caracteristicas de javaScript. 
+
+### Variables
+
+En typeSript se utiliza la palabra let para declarar una nueva variable, ejme:
+`let variable;`
+Estas variables no pueden cambiar el tipo de variable una vez hayan sido inicializadas, como al caso contrario de javaSript que puede cambiar el tipo de la variable en cualquier momento.
+
+### Tipos de variables
+
+Se tienen los siguientes tipos en typeScript:
+````
+let a: number;
+let b: boolean;
+let c: string;
+let d: any;
+````
+tambien se pueden tener arreglos de la siguiente manera:
+``
+let e: number[] = [1,2,3];
+let f: any[] = [1, true, 'a', false];``
+
+Se puede notar que el tipo any puede contener cualquier tipo de variable 
+
 
 
 
