@@ -70,7 +70,8 @@ let d: any;
 tambien se pueden tener arreglos de la siguiente manera:
 ``
 let e: number[] = [1,2,3];
-let f: any[] = [1, true, 'a', false];``
+let f: any[] = [1, true, 'a', false];
+``
 
 Se puede notar que el tipo any puede contener cualquier tipo de variable 
 
