@@ -108,11 +108,93 @@ como solo tiene una linea la función podemos quitar los corchete y hacer el có
 ```
 let doLog = (message) =>  console.log(message);
 ```
+A este tipo de funciones se le conoce tambien como funciones lambda.
+
+### Interfaces
+
+Podemos utilizar interfaces en typeScript de la siguiente manera:
+```
+interface Point{
+ x: number,
+ y: number
+}
+
+let drawPoint = (point: Point){
+ /// code
+}
+```
+### Clases
+
+Las clases se definen de la siguiente manera:
+```
+class Point {
+ x: number;
+ y: numer;
+ 
+ constructor(x?: number, y?: number){
+  this.x = x;
+  this.y = y;
+ }
+ draw(){
+  //code
+ }
+ getDistance(){
+  //code
+ }
+}
+```
+En la sintaxis x?: number lo que quiere decir la letra '?' es que el parametro x es opcional en el contructor o función. 
+
+Una mejor manera de construir clases en typeScript es de la siguiente manera:
+```
+class Point {
+ constructor(private _x?: number, private _y?: number){
+ }
+ 
+ get x(){
+  return this._x
+ }
+ 
+ set x(value){
+  this._x = value;
+ }
+ draw(){
+  //code
+ }
+ getDistance(){
+  //code
+ }
+}
+```
+Se puede notar que en el mismo contructor inicializamos las variables de la clase ademas que ya tienen esta forma `_x`, todo esto como convencion para que en los getter and setter las variables tengan simplemente el nombre de la variable, se puede notar que el get y el set son sintaxis de typeScript.
+
+### Module
+
+Para tener clases en otros archivos y poder utilizar dicha clase en cualquier archivo se hace de la siguiente manera:
+
+primero se agrega la sintaxis export al principio de la clase
+
+```
+export class Point {
+ constructor(private _x?: number, private _y?: number){
+ }
+ 
+ get x(){
+  return this._x
+ }
+ ...
+}
+```
+Con esto estamos diciendo que esta clase se va a exportar
+
+luego para utilizar en cualquier otro archivo simplemente se debe de importar
+```
+import { Point } from './point';
+let point = new Point(1, 2);
+```
 
 
 
 
-
-  
 
 
