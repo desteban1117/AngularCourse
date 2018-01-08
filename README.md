@@ -89,6 +89,26 @@ Otra manera para crear varias constantes es utilizando la sintaxis enum:
 enum color = {Blue = 0, Red = 1, Green = 2}
 let backgroundColor = color.Blue
 ```
+### Arrow functions
+
+En javaSript se puede tener una función de la siguiente manera:
+```
+let log = function(message){
+ console.log(message);
+}
+```
+
+En typeScript se puede realizar de la siguiente manera:
+```
+let doLog = (message) => {
+ console.log(message);
+}
+```
+como solo tiene una linea la función podemos quitar los corchete y hacer el código más claro
+```
+let doLog = (message) =>  console.log(message);
+```
+
 
 
 
