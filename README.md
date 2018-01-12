@@ -224,19 +224,18 @@ Para usar un componente hay tres pasos principales:
 
 para registrar el componente en el app module se debe de ir al archivo app.module.ts e ingresar en el declaration del NgModule el componente, previamente se debe de haber importado este componente.
 ```
-#import { CoursesComponent } from './courses.component';
+# import { CoursesComponent } from './courses.component';
 
 @NgModule({
-  declarations: 
+  declarations: [
     AppComponent,
   # CoursesComponent
   ],
-  imports: 
+  imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: 
-    CoursesService
+  providers: [
   ],
   bootstrap: [AppComponent]
 })
@@ -244,5 +243,138 @@ para registrar el componente en el app module se debe de ir al archivo app.modul
 
 3. Agregar el elemento en el html markup
 
+Ahora se puede agregar en el archivo app.component.html, el cual es el archivo donde se encuentra el html de componente principal appComponent, la etiqueta de nuestro componente
 
+`<courses></courses>`
 
+Para facilitar la creación de componentes podemos utiliza el comando `ng g c nameComponent`, con este comando generamos 4 archivos y actualizamos el app.module.ts. Los archivos que se crean son:
+
+course.component.css: que es donde se va poner el estilo del componen
+course.component.html: que es donde va estar el html del componente
+course.component.spec.ts: que es el archivo donde se pueden hacer pruebas del componente
+course.component.ts: y el archivo donde se va crear el componente
+
+### Template 
+
+En el atributo template podemos mostrar datos de la siguiente manera:
+
+```
+ import { Component } from '@angular/core'; //Se importa el decorador del componente 
+ 
+ @Component({
+   selector: 'courses',
+   template: '<h2>{{ title }}<h2>'
+ })
+ export class CoursesComponent{
+  title = "List of courses";
+ }
+```
+incluso se pueden tener metodos que retornen datos:
+```
+ import { Component } from '@angular/core'; //Se importa el decorador del componente 
+ 
+ @Component({
+   selector: 'courses',
+   template: '<h2>{{ getTitle() }}<h2>'
+ })
+ export class CoursesComponent{
+  title = "List of courses";
+  
+  getTitle(){
+   return title;
+  }
+ }
+```
+A la sintaxis `{{ getTitle() }}` se le llama interpolación
+
+### Directivas
+Con las directivas podemos manipular el elemento dom, en nuestro caso sería `ngFor` para mostrar la lista de cursos
+```
+ import { Component } from '@angular/core'; //Se importa el decorador del componente 
+ 
+ @Component({
+   selector: 'courses',
+   template: `
+   <h2>{{ getTitle() }}<h2>
+   <ul>
+    <li *ngFor="let course of courses">
+     {{ course }}
+    </li>
+   </ul>
+   `
+ })
+ export class CoursesComponent{
+  title = "curses"
+  listCourses = ["courses1","courses2","courses3"]
+  
+  getTitle(){
+   return title;
+  }
+ }
+```
+### Dependency Injection
+
+Supongamos que tenemos un servicio en un archivo llamado courses.service.ts
+
+```
+export class CoursesService{
+  title = "List of course"
+  listCourses = ["courses1","courses2","courses3"]
+  
+  getTitle(){
+   return title;
+  }
+  getCourses(){
+   return listCourses;
+  }
+ }
+ ```
+Podemos injectar este componente sin tener que crear una instancia de este de la siguiente manera
+```
+export class CoursesComponent{
+  title = "curses"
+  courses;
+  constructor(service: CoursesService){
+   this.courses = service.getCourses()
+  }
+ 
+  }
+  ```
+  Para que se pueda injectar el servicio también debemos registrarlo en archivo app.module.ts como un provider de la siguiente manera:
+  
+  ```
+#import { CoursesComponent } from './courses.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    CoursesComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [
+  # CoursesService
+  ],
+  bootstrap: [AppComponent]
+})
+```
+
+Otra forma más sencilla de crear un servicios es con el siguiente comando de Angula CLI `ng g s nameService` el cual nos creará los siguiente archivos:
+
+email.service.ts: que es el archivo donde tendremos nuestro servicio
+email.service.spec: archivo para pruebas  
+
+En el archivo email.service.ts tendremos lo siguiente:
+```
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class EmailService {
+
+  constructor() { }
+
+}
+```
+En donde `@Injectable()` es un decorador para injectar dependencias, con el caso de los componentes no se necesita este decorador por que el decorador `@Component` ya contiene este decorador contiene internamente el decorador `@Injectable()`
