@@ -193,8 +193,56 @@ import { Point } from './point';
 let point = new Point(1, 2);
 ```
 
+## Angular Fundamentals
 
+### Building Blocks of Angular
 
+Component: Un componente encapsula datos, html, y la lógica de la vista.
+
+Module: Es un contenedor de componentes relacionados, un module puede estar resposable por una específica área de la aplicación
+
+#### Components
+
+Para usar un componente hay tres pasos principales:
+
+1. Crear el componente:
+
+ ```
+ import { Component } from '@angular/core'; //Se importa el decorador del componente 
+ 
+ @Component({
+   selector: 'courses',
+   template: '<h2>Courses<h2>'
+ })
+ export class CoursesComponent{
+  code...
+ }
+ ```
+ @Component es el decorador que lleva un parametro que tiene 2 atributos principales, los cuales es el `selector` el cual lleva el nombre de la etiqueta del component en el html (<courses></courses>) y el tamplate, el cual contiene el html del cual esta hecho el componente.
+ 
+2. Registrar el componente en un module
+
+para registrar el componente en el app module se debe de ir al archivo app.module.ts e ingresar en el declaration del NgModule el componente, previamente se debe de haber importado este componente.
+```
+#import { CoursesComponent } from './courses.component';
+
+@NgModule({
+  declarations: 
+    AppComponent,
+  # CoursesComponent
+  ],
+  imports: 
+    BrowserModule,
+    FormsModule
+  ],
+  providers: 
+    CoursesService
+  ],
+  bootstrap: [AppComponent]
+})
+```
+
+3. Agregar el elemento en el html markup
 
 
 
