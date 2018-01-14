@@ -378,3 +378,20 @@ export class EmailService {
 }
 ```
 En donde `@Injectable()` es un decorador para injectar dependencias, con el caso de los componentes no se necesita este decorador por que el decorador `@Component` ya contiene este decorador contiene internamente el decorador `@Injectable()`
+
+### Property Banding
+
+El property banding solo funcioana de un sentido, sirve para cambiar el Dom, desde el componente al Dom, pero no puede hacer cambios desde el Dom hacia el componente.Para utilizar property banding en Angular lo hacemos de la siguiente manera:
+```
+ import { Component } from '@angular/core'; //Se importa el decorador del componente 
+ 
+ @Component({
+   selector: 'courses',
+   template: `
+    <img [src] = "imageUrl"] />
+   `
+ })
+ export class CoursesComponent{
+  imageUrl = "http://fsjnsfjnss"
+ }
+```
