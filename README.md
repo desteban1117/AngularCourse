@@ -382,9 +382,7 @@ En donde `@Injectable()` es un decorador para injectar dependencias, con el caso
 ### Property Banding
 
 El property banding solo funcioana de un sentido, sirve para cambiar el Dom, desde el componente al Dom, pero no puede hacer cambios desde el Dom hacia el componente.Para utilizar property banding en Angular lo hacemos de la siguiente manera:
-```
- import { Component } from '@angular/core'; //Se importa el decorador del componente 
- 
+``` 
  @Component({
    selector: 'courses',
    template: `
@@ -393,5 +391,39 @@ El property banding solo funcioana de un sentido, sirve para cambiar el Dom, des
  })
  export class CoursesComponent{
   imageUrl = "http://fsjnsfjnss"
+ }
+```
+
+### Attribute binding 
+Hay atributos que se pueden encontrar en HTML pero no en el DOM, por ejemplo el atributo colspan
+``` 
+ @Component({
+   selector: 'courses',
+   template: `
+    <table>
+     <tr>
+      <td [colspan]="colsPan"></td>
+     </tr>
+    </table>
+   `
+ })
+ export class CoursesComponent{
+  colspan = 2;
+ }
+```
+Este código no funcionara ya que el atributo colpan no existe en el DOM, es un atributo propio de HTML, cuando utilizamos property banding hay que recordar que estamos haciendo cambios sobre el DOM y no sobre atributos de HTML. Para que se pueda utilizar esta propiedad lo debemos hacer de la siguiente manera:
+``` 
+ @Component({
+   selector: 'courses',
+   template: `
+    <table>
+     <tr>
+      <td [attr.colspan]="colsPan"></td>
+     </tr>
+    </table>
+   `
+ })
+ export class CoursesComponent{
+  colspan = 2;
  }
 ```
