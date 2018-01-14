@@ -297,7 +297,7 @@ Con las directivas podemos manipular el elemento dom, en nuestro caso sería `ng
    template: `
    <h2>{{ getTitle() }}<h2>
    <ul>
-    <li *ngFor="let course of courses">
+    <li *ngFor="let course of listCourses">
      {{ course }}
     </li>
    </ul>
